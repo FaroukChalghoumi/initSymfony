@@ -1,0 +1,42 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}Hello StudentController!{% endblock %}
+
+{% block body %}
+
+
+
+<h2>Date : </h2>
+<table border="1px">
+
+    <tr>
+        <td>nsc</td>
+        <td>name</td>
+        <td>moyene</td>
+        <td>creation-date</td>
+        <td>classroom</td>
+
+
+        <td>actions</td>
+
+    </tr>
+    {% for c in studentListDate %}
+
+        <tr>
+            <td>{{ c.nsc }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.moyene }}</td>
+            <td>{{ c.getCreationDate()|date('d-m-Y') }}</td>
+            <td>{{ c.classroom.email }}</td>
+
+
+
+
+
+
+        </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

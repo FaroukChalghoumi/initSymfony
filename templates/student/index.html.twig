@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StudentController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+    <td><a href="{{ path('app_studentadd' )}}">new</a></td>
+    <div>{{form(formSearch)}}</div>
+    <div>{{form(formSearchByClassroom)}}</div>
+    <div>{{form(forminMax)}}</div>
+    <table border="1px">
+
+        <tr>
+            <td>nsc</td>
+            <td>name</td>
+            <td>moyene</td>
+            <td>creation-date</td>
+            <td>classroom</td>
+
+
+            <td>actions</td>
+
+        </tr>
+        {% for c in studentList %}
+
+            <tr>
+                <td>{{ c.nsc }}</td>
+                <td>{{ c.name }}</td>
+                <td>{{ c.moyene }}</td>
+                <td>{{ c.getCreationDate()|date('d-m-Y') }}</td>
+                <td>{{ c.classroom.email }}</td>
+
+
+            <td><a href="{{ path('app_studentremove',{'id':c.nsc} )}}">delete</a>
+            <a href="{{ path('app_studentupdate',{'id':c.nsc} )}}">update</a>
+{#                    <a href="{{ path('app_product_details',{'id':c.matricule} )}}">Details</a></td>#}
+
+
+
+
+
+                <td><a href="{{ path('app_studentremove',{'id':c.nsc} )}}">delete</a></td>
+
+
+
+            </tr>
+
+        {% endfor %}
+
+
+
+{% endblock %}
